@@ -1,0 +1,13 @@
+window_sizes 1366 745 320 1041 595 104
+
+diagrams
+  active  classdiagram_ref 128002 // shape-uml
+    1004 541 100 A4 0 0
+end
+show_stereotypes
+selected 
+  package_ref 129 // UML-diagram
+open
+  classview_ref 128002 // shape
+end
+end

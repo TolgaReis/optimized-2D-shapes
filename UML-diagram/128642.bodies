@@ -1,0 +1,50 @@
+class Global
+!!!131586.java!!!	drawAll(inout array : Shape [[]], inout graphics : Graphics) : Graphics
+		for(Shape i: array) {
+			if(i instanceof Rectangle) {
+				Rectangle temp = (Rectangle)i;
+				graphics.setColor(temp.getColor());
+				graphics = temp.draw(graphics);
+			}
+			else if(i instanceof Triangle) {
+				Triangle temp = (Triangle)i;
+				graphics.setColor(temp.getColor());
+				graphics = temp.draw(graphics);
+			}
+			else if(i instanceof Circle) {
+				Circle temp = (Circle)i;
+				graphics.setColor(temp.getColor());
+				graphics = temp.draw(graphics);
+			}
+		}
+			return graphics;
+!!!131714.java!!!	convertAll(inout array : Shape [[]]) : Polygon
+		Polygon[] polygon = new Polygon[array.length];
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] instanceof Rectangle) {
+				Rectangle temp = (Rectangle)array[i];
+				polygon[i] = new PolygonDyn(temp);
+			}
+			else if(array[i] instanceof Triangle) {
+				Triangle temp = (Triangle)array[i];
+				polygon[i] = new PolygonDyn(temp);
+			}
+			else if(array[i] instanceof Circle) {
+				Circle temp = (Circle)array[i];
+				polygon[i] = new PolygonDyn(temp);
+			}
+		}
+		return polygon;
+!!!131842.java!!!	sortShapes(inout array : Shape [[]]) : void
+		int n = array.length; 
+        for (int i = 0; i < n-1; i++) 
+            for (int j = 0; j < n-i-1; j++) 
+                if (array[j].area() > array[j+1].area()) 
+                { 
+                    Shape temp = array[j]; 
+                    array[j] = array[j+1]; 
+                    array[j+1] = temp; 
+                } 
+
+!!!131970.java!!!	Global()
+		// TODO Auto-generated constructor stub

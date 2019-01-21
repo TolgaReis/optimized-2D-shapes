@@ -1,0 +1,71 @@
+class Rectangle
+!!!135170.java!!!	Rectangle(in x : double, in y : double, in width : double, in height : double, inout color : Color)
+    	if(width < 0 | height < 0)
+    		throw new ShapeException("Negative length!");
+    	else {
+    		this._x = x;
+            this._y = y;
+            this._width = width;
+            this._height = height;
+            this._color = color;
+    	}
+!!!135298.java!!!	Rectangle(in width : double, in height : double, inout color : Color)
+    	this(0, 0, width, height, color);
+!!!135426.java!!!	Rectangle()
+        this(0, 0, 0, 0, Color.red);
+!!!135554.java!!!	set(in x : double, in y : double, in width : double, in height : double, inout color : Color) : void
+        if(width < 0 | height < 0)
+        	throw new ShapeException("Negative length");
+        else {
+        	this._x = x;
+        	this._y = y;
+        	this._width = width;
+        	this._height = height;
+        	this._color = color;
+        }
+!!!135682.java!!!	set(in width : double, in height : double, inout color : Color) : void
+    	if(width < 0 | height < 0)
+    		throw new ShapeException("Negative length!");
+    	else{
+    		this._width = width;
+            this._height = height;
+            this._color = color;
+    	}
+!!!135810.java!!!	getX() : double
+        return this._x;
+!!!135938.java!!!	getY() : double
+        return  this._y;
+!!!136066.java!!!	getWidth() : double
+        return this._width;
+!!!136194.java!!!	getHeight() : double
+        return this._height;
+!!!136322.java!!!	getColor() : Color
+        return this._color;
+!!!136450.java!!!	area() : double
+        return this._height*this._width;
+!!!136578.java!!!	perimeter() : double
+        return  (this._height+this._width)*2;
+!!!136706.java!!!	increment() : void
+        ++this._x;
+        ++this._y;
+!!!136834.java!!!	decrement() : void
+        --this._x;
+        --this._y;
+!!!136962.java!!!	compareTo(inout shape : Shape) : int
+        return Double.compare(this.area(), shape.area());
+!!!137090.java!!!	draw(inout graphics : Graphics) : Graphics
+    	graphics.setColor(this._color);
+        graphics.drawRect((int)this.getX(), (int)this.getY(), (int)this.getWidth(), (int)this.getHeight());
+        return graphics;
+!!!137218.java!!!	toString() : String
+    	String temp = "Area = " + Double.toString(this.area()) + 
+    				  ", Perimeter = " + Double.toString(this.perimeter()) + 
+    				  "\nCoordinates = (" + Double.toString(this._x) + 
+    				  ", " + Double.toString(this._y) + ")" + "\nAfter increment, coordinates = (";
+    	this.increment();
+    	temp += Double.toString(this._x) + 
+      			", " + Double.toString(this._y) + ")\nAfter decrement, coordinates = (";
+    	this.decrement();
+    	temp += Double.toString(this._x) + 
+				  ", " + Double.toString(this._y) + ")";
+    	return temp;

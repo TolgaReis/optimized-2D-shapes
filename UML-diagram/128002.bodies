@@ -1,0 +1,55 @@
+class Circle
+!!!128770.java!!!	Circle(in x : double, in y : double, in radius : double, inout color : Color)
+		if(radius < 0)
+			throw new ShapeException("Negative length!");
+		else {
+			this._x = x;
+			this._y = y;
+			this._radius = radius;
+			this._color = color;
+		}
+!!!128898.java!!!	Circle()
+		this(0, 0, 0, Color.RED);
+!!!129026.java!!!	set(in x : double, in y : double, in radius : double, inout color : Color) : void
+		if(radius < 0)
+			throw new ShapeException("Negative length!");
+		this._x = x;
+		this._y = y;
+		this._radius = radius;
+		this._color = color;
+!!!129154.java!!!	getX() : double
+ return this._x;
+!!!129282.java!!!	getY() : double
+ return this._y;
+!!!129410.java!!!	getR() : double
+ return this._radius;
+!!!129538.java!!!	getColor() : Color
+ return this._color;
+!!!129666.java!!!	area() : double
+ return (Math.PI*Math.pow(this._radius, 2));
+!!!129794.java!!!	perimeter() : double
+ return (2 * Math.PI * this._radius);
+!!!129922.java!!!	increment() : void
+		++this._x;
+		++this._y;
+!!!130050.java!!!	decrement() : void
+		--this._x;
+		--this._y;
+!!!130178.java!!!	compareTo(inout circle : Shape) : int
+		return Double.compare(this.area(), circle.area());
+!!!130306.java!!!	draw(inout graphics : Graphics) : Graphics
+		graphics.setColor(this.getColor());
+		graphics.drawOval((int)this.getX(), (int)this.getY(), (int)this.getR(), (int)this.getR());
+		return graphics;
+!!!130434.java!!!	toString() : String
+    	String temp = "Area = " + Double.toString(this.area()) + 
+    				  ", Perimeter = " + Double.toString(this.perimeter()) + 
+    				  "\nCoordinates = (" + Double.toString(this._x) + 
+    				  ", " + Double.toString(this._y) + ")" + "\nAfter increment, coordinates = (";
+    	this.increment();
+    	temp += Double.toString(this._x) + 
+      			", " + Double.toString(this._y) + ")\nAfter decrement, coordinates = (";
+    	this.decrement();
+    	temp += Double.toString(this._x) + 
+				  ", " + Double.toString(this._y) + ")";
+    	return temp;

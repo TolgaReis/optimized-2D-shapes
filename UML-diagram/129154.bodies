@@ -1,0 +1,30 @@
+class PolygonVect
+!!!134274.java!!!	PolygonVect(inout shape : Shape)
+		super(shape);
+		arrli = new ArrayList<Point2D.Double>(this._size);
+		for(int i = 0; i < this._size; i++)
+			arrli.add(this.points[i]);
+!!!134402.java!!!	area() : double
+		 return this._area;
+!!!134530.java!!!	perimeter() : double
+		return this._perimeter;
+!!!134658.java!!!	increment() : void
+		for(int i = 0; i < this._size; i++)
+			arrli.get(i).setLocation(arrli.get(i).getX() + 1, arrli.get(i).getY() + 1);
+!!!134786.java!!!	decrement() : void
+		for(int i = 0; i < this._size; i++)
+			arrli.get(i).setLocation(arrli.get(i).getX() - 1, arrli.get(i).getY() - 1);
+!!!134914.java!!!	compareTo(inout rightSide : Shape) : int
+		return Double.compare(this.area(), rightSide.area());
+!!!135042.java!!!	draw(inout graphics : Graphics) : Graphics
+		int[] tempX = new int[this._size];
+		int[] tempY = new int[this._size];
+		for(int i = 0; i < this._size; i++) {
+			tempX[i] = (int)arrli.get(i).getX();
+		}
+		for(int i = 0; i < this._size; i++) {
+			tempY[i] = (int)arrli.get(i).getY();
+		}
+		graphics.setColor(this._color);
+		graphics.drawPolygon(tempX, tempY, this._size);
+		return graphics;

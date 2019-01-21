@@ -1,0 +1,7 @@
+class ShapeException
+!!!137346.java!!!	ShapeException()
+        this.message = new String("\nERROR!\n");
+!!!137474.java!!!	ShapeException(in newMessage : String)
+        this.message = newMessage;
+!!!137602.java!!!	what() : String
+        return this.message;

@@ -1,0 +1,17 @@
+class PolygonDyn
+!!!133378.java!!!	PolygonDyn(inout shape : Shape)
+		super(shape);
+!!!133506.java!!!	area() : double
+		 return this._area;
+!!!133634.java!!!	perimeter() : double
+		return this._perimeter;
+!!!133762.java!!!	increment() : void
+		for(int i = 0; i < this._size; i++)
+			points[i].setLocation(points[i].getX() + 1, points[i].getY() + 1);
+!!!133890.java!!!	decrement() : void
+		for(int i = 0; i < this._size; i++)
+			points[i].setLocation(points[i].getX() - 1, points[i].getY() - 1);
+!!!134018.java!!!	compareTo(inout rightSide : Shape) : int
+		return Double.compare(this.area(), rightSide.area());
+!!!134146.java!!!	draw(inout graphics : Graphics) : Graphics
+		return super.draw(graphics);

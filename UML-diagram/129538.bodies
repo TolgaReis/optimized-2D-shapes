@@ -1,0 +1,101 @@
+class Triangle
+!!!137730.java!!!	Triangle(in p1x : double, in p1y : double, in p2x : double, in p2y : double, in p3x : double, in p3y : double, inout color : Color, in side : double)
+		if(side < 0.0)
+			throw new ShapeException("Negative length!");
+		else {
+			this.xPoints[0] = p1x;
+			this.xPoints[1] = p2x;
+			this.xPoints[2] = p3x;
+			this.yPoints[0] = p1y;
+			this.yPoints[1] = p2y;
+			this.yPoints[2] = p2y;
+			this._side = side;
+			this._color = color;
+		}
+!!!137858.java!!!	Triangle()
+		this(0, 0, 0, 0, 0, 0, Color.RED, 0);
+!!!137986.java!!!	set(in p1x : double, in p1y : double, in p2x : double, in p2y : double, in p3x : double, in p3y : double, inout color : Color, in side : double) : void
+		if(side < 0)
+			throw new ShapeException("Negative length!");
+		else {
+			this.xPoints[0] = p1x;
+			this.xPoints[1] = p2x;
+			this.xPoints[2] = p3x;
+			this.yPoints[0] = p1y;
+			this.yPoints[1] = p2y;
+			this.yPoints[2] = p3y;
+		}
+		
+!!!138114.java!!!	setPoints(in p1x : double, in p1y : double, in p2x : double, in p2y : double, in p3x : double, in p3y : double) : void
+		this.set(p1x, p1y, p2x, p2y, p3x, p3y, this._color, this._side);
+!!!138242.java!!!	getP1X() : double
+ return xPoints[0];
+!!!138370.java!!!	getP1Y() : double
+ return this.yPoints[0];
+!!!138498.java!!!	getP2X() : double
+ return this.xPoints[1];
+!!!138626.java!!!	getP2Y() : double
+ return this.yPoints[1];
+!!!138754.java!!!	getP3X() : double
+ return this.xPoints[2];
+!!!138882.java!!!	getP3Y() : double
+ return this.yPoints[2];
+!!!139010.java!!!	getSide() : double
+ return this._side;
+!!!139138.java!!!	getColor() : Color
+ return this._color;
+!!!139266.java!!!	area() : double
+ return Math.pow(this.getSide(), 2)*Math.sqrt(3)/4;
+!!!139394.java!!!	perimeter() : double
+ return 3 * this.getSide();
+!!!139522.java!!!	increment() : void
+		++this.xPoints[0];
+		++this.xPoints[1];
+		++this.xPoints[2];
+		++this.yPoints[0];
+		++this.yPoints[1];
+		++this.yPoints[2];
+!!!139650.java!!!	decrement() : void
+		--this.xPoints[0];
+		--this.xPoints[1];
+		--this.xPoints[2];
+		--this.yPoints[0];
+		--this.yPoints[1];
+		--this.yPoints[2];
+!!!139778.java!!!	compareTo(inout triangle : Shape) : int
+		return Double.compare(this.area(), triangle.area());
+!!!139906.java!!!	draw(inout graphics : Graphics) : Graphics
+		graphics.setColor(this._color);
+		int[] xTemp = new int[3];
+		int[] yTemp = new int[3];
+		for(int i = 0; i < 3; i++) {
+			xTemp[i] = (int)this.xPoints[i];
+			yTemp[i] = (int)this.yPoints[i];
+		}
+		graphics.drawPolygon(xTemp, yTemp, 3);
+		return graphics;
+!!!140034.java!!!	toString() : String
+    	String temp = "Area = " + Double.toString(this.area()) + 
+    				  ", Perimeter = " + Double.toString(this.perimeter()) + 
+    				  "\nCoordinates = (" + Double.toString(this.xPoints[0]) + 
+    				  ", " + Double.toString(this.yPoints[0]) + "," + 
+    				  Double.toString(this.xPoints[1]) + 
+    				  ", " + Double.toString(this.yPoints[1]) + "," +
+    				  Double.toString(this.xPoints[2]) + 
+    				  ", " + Double.toString(this.yPoints[2]) +
+    				  ")" + "\nAfter increment, coordinates = (";
+    	this.increment();
+    	temp +=   Double.toString(this.xPoints[0]) + 
+				  ", " + Double.toString(this.yPoints[0]) + "," + 
+				  Double.toString(this.xPoints[1]) + 
+				  ", " + Double.toString(this.yPoints[1]) + "," +
+				  Double.toString(this.xPoints[2]) + 
+				  ", " + Double.toString(this.yPoints[2]) + ")\nAfter decrement, coordinates = (";
+    	this.decrement();
+    	temp +=   Double.toString(this.xPoints[0]) + 
+				  ", " + Double.toString(this.yPoints[0]) + "," + 
+				  Double.toString(this.xPoints[1]) + 
+				  ", " + Double.toString(this.yPoints[1]) + "," +
+				  Double.toString(this.xPoints[2]) + 
+				  ", " + Double.toString(this.yPoints[2]) + ")";
+    	return temp;
